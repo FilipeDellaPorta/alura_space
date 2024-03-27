@@ -12,6 +12,8 @@ class Fotografia(models.Model):
         ("ESTRELA", "Estrela"),
         ("PLANETA", "Planeta"),
         ("GALÁXIA", "Galáxia"),
+        ("BURACO NEGRO", "Buraco Negro"),
+        ("SUPERMASSIVO BURACO NEGRO", "Supermassivo Buraco Negro"),
     ]
 
     nome = models.CharField(max_length=100, null=False, blank=False)
@@ -19,7 +21,7 @@ class Fotografia(models.Model):
     categoria = models.CharField(max_length=50, choices=OPCOES_CATEGORIA) #, default='')
     foto = models.ImageField(upload_to="fotos/%Y/%m/%d", blank=True)
     descricao = models.TextField(null=False, blank=False)
-    publicada = models.BooleanField(default=False)
+    publicada = models.BooleanField(default=True)
     data_fotografia = models.DateTimeField(default=datetime.now, blank=False)
     usuario = models.ForeignKey(
         to=User,
